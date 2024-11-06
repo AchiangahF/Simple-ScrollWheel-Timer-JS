@@ -4,6 +4,10 @@ let hours = document.getElementById("hours");
 let minutes = document.getElementById("minutes");
 let seconds = document.getElementById("seconds");
 
+
+let controlButton = document.getElementById("strp");
+let controlButtonState = false;
+
 // function to chose value using scroll wheel
 
 function scroller(param, timeParam){
@@ -21,8 +25,14 @@ function scroller(param, timeParam){
     }
 }
 
+function timerFunction(){
+    controlButton.src = (controlButtonState == false) ? './assest/pause.png' : './assest/play.png';
+    controlButtonState = !controlButtonState;
+}
+
 // Adding the event to the various time fieds passing the event object and time field as parmeters
 
 hours.addEventListener('wheel', (e)=>{scroller(e, hours)});
 minutes.addEventListener('wheel', (e)=>{scroller(e, minutes)});
 seconds.addEventListener('wheel', (e)=>{scroller(e, seconds)});
+controlButton.addEventListener('click', timerFunction);
